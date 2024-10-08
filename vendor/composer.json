@@ -1,0 +1,6 @@
+{
+    "name": "enzzo/layout",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}

@@ -1,0 +1,278 @@
+*{
+    margin: 0;
+}
+
+body{
+    display: grid; 
+}
+
+header{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(23, 166, 255);
+    color: #ffffff;
+    padding: 20px;
+}
+
+.horario{
+    border-radius: 5px;
+}
+
+.local{
+    border-radius: 5px;
+}
+
+.telefone{
+    border-radius: 5px;
+}
+
+.seg{
+    display: flex;
+    padding: 25px;
+    justify-content: center;
+}
+
+
+ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
+
+}
+
+li{
+    margin-left: 55px  ;
+    list-style-type: none; 
+    font-size: 20px;
+
+}
+.text{
+    margin-right: 50px;
+    margin-left: 10px;
+}
+
+.log{
+    padding-top: 13px;
+    margin-left: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(23, 166, 255);
+}
+
+.img{
+    padding-top: 15px;
+    margin-left: 16px;
+}
+
+.mid{
+    background-image: url(https://www.wallpaperflare.com/static/81/927/683/cloud9-dota-2-cloud-nine-cloud-wallpaper.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    width: 100vw;
+    margin-bottom: 40px;
+}
+.text01{
+    color: #ffffff;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 110px;
+    font-size: 25px;
+
+}
+
+.textp{
+    margin-right: 1200px;
+}
+
+.tr{
+    cursor: pointer;
+    margin-right: 35px;
+    background: none;
+    border-color: #ffffff;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.tr:hover{
+    transition: 1s;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.349);
+}
+
+.ch{
+    cursor: pointer;
+    padding: 11px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(57, 163, 221);
+    color: #ffffff;
+
+}
+
+.ch:hover{
+    transition: 1s;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.349);
+    background-color: rgb(44, 117, 156);;
+}
+
+.mid2{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: column;
+}
+.traço{
+    font-size:60px;
+    margin: 0;
+}
+
+.content{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.card{
+    border-radius: 10px;
+    background-image: url("https://assets1.ignimgs.com/2018/01/30/br-1517350618762_160w.jpg?width=1280");
+    background-repeat: no-repeat;
+    height: 70vh;
+    width: 20vw;
+    background-color: rgb(23, 166, 255);
+    margin-left: 10px;
+    color: white;
+    margin-bottom: 100px;
+}
+
+.divbutton{
+    display: flex;
+    justify-content: center;
+}
+
+.buttoncard{
+    background-color: transparent;
+    color: white;
+    border-color: white;
+    border-radius: 1px;
+    border: 1px solid white;
+    height: 40px;
+    width: 130px;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.h5card1{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.h5card2{
+    margin-top: 57%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.h5card3{
+    margin-top: 115%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.textmain{
+    margin-top: 10px;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.textm{
+    border-radius: 10px;
+    background-color: rgba(23, 166, 255,0.6);
+    margin-top: 115%;
+}
+
+.textm1{
+    border-radius: 10px;
+    background-color: rgba(23, 166, 255,0.6);
+}
+
+.textm2{
+    border-radius: 10px;
+    background-color: rgba(23, 166, 255,0.6);  
+}
+
+.textm text{
+color: white;
+}
+
+.formcontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.buttoncard1{
+    background-color: transparent;
+    color: white;
+    border-color: white;
+    border-radius: 1px;
+    border: 1px solid white;
+    height: 40px;
+    width: 130px;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.formcontainer input{
+    display: flex;
+    width: 300px;
+    margin-bottom: 30px;
+}
+
+.form-items {
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+  border: 2px, solid, rgba(23, 166, 255,0.6);
+padding-right: 200px;
+  padding-left: 200px;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  margin: 10px;
+}
+
+.button{
+    height: 40px;
+    width: 100%;
+}
+
+.cadastro{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(23, 166, 255);
+}
+
+input{
+    height: 30px;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.form-group1{
+    margin-top: 10px;
+}
+
+

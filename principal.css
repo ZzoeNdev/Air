@@ -1,0 +1,101 @@
+body{   
+    background-image: url(imagens/TelaInicial.png);
+    margin: 0;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.forms{
+    display: grid;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+.exit{
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    color: white;
+    background-color: rgb(185, 51, 51);
+    cursor: pointer;
+}
+
+.exit:hover{
+    transition: 0,5s;
+    background-color: rgb(100, 28, 28);
+}
+
+.btexit{
+    display: flex;
+    justify-content: end;
+    margin: 20px;
+}
+
+.sapato-inicio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.textoe {
+    margin-left: 35px;
+    max-width: 300px;
+    color: white;
+    font-weight: 700;
+}
+
+p{
+    font-family: "Inter", sans-serif;
+}
+
+.titulo-s{
+    font-weight: 800;
+    font-style: italic;
+    color: white;
+    max-width: 500px;
+    font-size: 35px;
+    letter-spacing: -2px;
+    margin-bottom: 0;
+}
+
+.textod{
+    margin-top: 600px;
+    font-family: "Inter", sans-serif;
+    margin-right: 35px;
+    max-width: 300px;
+    color: white;
+    font-weight: 700;
+}
+
+.texts{
+    font-size: 14px;
+}
+
+.img-s{
+    margin-top: 110px;
+}
+
+.pesquisa{
+    border: none;
+    border-radius: 20px;
+    height: 40px;
+    width: 35%;
+}
+

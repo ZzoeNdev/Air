@@ -1,0 +1,115 @@
+body{
+    display: grid;
+    background-image: url(../imagens/TelaLogin.png); 
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+}
+
+.forms{
+    background-color: white;
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 3px 4px 0px 0px rgba(65, 64, 64, 0.11);;
+}
+
+.text{
+    text-align: center;
+    background-color: rgba(236, 236, 236, 1);
+    border: none;
+    border-radius: 8px;
+    width: 280px;
+    height: 30px;
+}
+
+.button{
+    margin-top: 10px;
+    border: none;
+    height: 40px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: rgba(227, 100, 107, 1);
+    color: white;
+    cursor: pointer;
+}
+
+.button-ex{
+    border: none;
+    height: 20px;
+    width: 90px;
+    border-radius: 3px;
+    background-color: rgb(146, 145, 145);
+    color: white;
+    cursor: pointer;
+}
+
+.button:hover{
+    transition: 0.7s;
+    background-color: rgb(196, 82, 87);
+    color: rgb(255, 253, 248);
+}
+
+.button-ex:hover{
+    transition: 0.7s;
+    background-color: rgba(227, 100, 107, 1);
+    color: rgb(255, 253, 248);
+}
+
+p{
+    font-family: "Inter", sans-serif;
+}
+
+.cadastro{
+    border: none;
+    border-radius: 14px;
+    height: 40px;
+    width: 200px;
+    background-color: rgba(227, 100, 107, 1);
+    color: white;
+    cursor: pointer;
+}
+
+.cadastro:hover{
+    transition: 1s;
+    color: white;
+    background-color:rgb(196, 89, 95);
+}
+
+.login-l{
+    font-family: "Inter", sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    font-style: italic;
+    color: rgba(227, 100, 107, 1);;
+}
+
+.ins{
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.senha{
+    font-size: 15px;
+}
+
+.email{
+    font-size: 15px;
+}
+
