@@ -1,0 +1,184 @@
+<?php
+
+session_start();
+include_once('../config.php');
+
+$senha = $_SESSION['senha'];
+$email = $_SESSION['email'];
+$nome = $_SESSION['nome'];
+
+echo $_SESSION['senha'];
+echo $_SESSION['email'];
+
+print_r($nome);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="perfil.css">
+    <script src="teste1.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Perfil</title>
+</head>
+<body>
+
+    <header>
+
+        <div>
+            <img src="../imagens/Logo.png" alt="" height="100px">
+        </div>
+
+        <div>
+            <a href="../as.php"><button class="cadastro">Voltar a tela inicial</button></a>
+        </div>
+
+    </header>
+
+    <h1>Seu Perfil</h1>
+
+    <h1 for="">Olá <?php print_r($nome); ?>!</h1>
+
+    <form method="POST">
+
+        <img src="../imagens/PerfilIcon.png" alt="" height="100px">
+        <br>
+        <button>Trocar foto</button>
+
+    </form>
+
+        <label>Email: <?php print_r($email); ?></label> 
+        <button name="trc-email" id="mostrar" onclick="popEmail()">Trocar Email</button>
+
+        <?php
+
+            if (isset($_POST['tr-email']) && !empty($_POST['n-email'])) {
+
+                $novo_email = $_POST['n-email'];
+                $senha_troca = $_POST['n-senha'];
+
+                $sql = "SELECT * FROM cadastrar WHERE senha = '$senha_troca' AND email = '$email'";
+                $resp = $conexao->query($sql);
+
+                if (mysqli_num_rows($resp)>=1){
+
+                    $up = "UPDATE cadastrar SET email = '$novo_email' WHERE senha = '$senha_troca' AND email = '$email'";
+                    $resposta = $conexao->query($up);
+
+                    $_SESSION['email'] = $novo_email;
+
+                ?>
+
+                    <head>
+                        <meta htp-equiv="refresh" content="0.1">
+                    </head>
+
+                <?php
+
+                }
+
+                else{
+                    echo '<p>Senha incorreta</p> <style>p{color: red; margin: 0;}</style>';
+                }
+
+            }
+
+            ?>
+
+        <br>
+        <label>Senha: <?php print_r($senha); ?></label> 
+        <button name="trc-senha" onclick="popSenha()">Trocar Senha</button>
+    
+        <?php
+
+            if (isset($_POST['tr-senha']) && !empty($_POST['n-senha'])) {
+
+                $nova_senha = $_POST['n-senha'];
+                $senha_antiga = $_POST['a-senha'];
+
+                $sqli = "SELECT * FROM cadastrar WHERE senha = '$senha_antiga' AND email = '$email'";
+                $ressp = $conexao->query($sqli);
+
+                if (mysqli_num_rows($ressp)>=1){
+
+                    $update = "UPDATE cadastrar SET senha = '$nova_senha' WHERE senha = '$senha_antiga' AND email = '$email'";
+                    $reposta = $conexao->query($update);
+
+                    $_SESSION['senha'] = $nova_senha;
+
+                ?>
+
+                    <head>
+                        <meta htp-equiv="refresh" content="0.1">
+                    </head>
+
+                <?php
+
+                }
+
+                else{
+                    echo '<p>Senha incorreta</p> <style>p{color: red; margin: 0;}</style>';
+                }
+
+            }
+
+            ?>
+    
+        <div id="popup-email">
+            <div id="popup">
+            <div class="fechar">
+                <label class="bt-fechar" id="mostrar" onclick="popEmail()">X</label>
+            </div>
+            <form class="form-popup" method="POST">
+                <label class="t1">Troca de</label>
+                <br>
+                <label class="t2">Email</label>
+                <br><br>
+                <label for="">Inisira seu <b>novo Email</b></label>
+                <br>
+                <input class="input-troca" type="email" name="n-email" placeholder="Email novo..."> 
+                <br><br>
+                <label for="">Inisira sua Senha</label>
+                <br>
+                <input class="input-troca" type="password" name="n-senha" placeholder="Sua senha...">
+                <br><br>
+                <button class="bt-popup" type="submit" name="tr-email">Trocar Email</button>
+            
+            </form>
+            </div>
+        </div>
+
+        <div id="popup-senha">
+            <div id="popup">
+            <div class="fechar">
+                <label class="bt-fechar" id="mostrar" onclick="popSenha()">X</label>
+            </div>
+            <form class="form-popup" method="POST">
+                <label class="t1">Troca de</label>
+                <br>
+                <label class="t2">Senha</label>
+                <br><br>
+                <label for="">Inisira sua nova Senha</label>
+                <br>
+                <input class="input-troca" type="text" name="n-email" placeholder="Senha nova..."> 
+                <br><br>
+                <label for="">Inisira sua Senha <b>Antiga</b></label>
+                <br>
+                <input class="input-troca" type="password" name="a-senha" placeholder="Senha antiga...">
+                <br><br>
+                <button class="bt-popup" type="submit" name="tr-senha">Trocar Senha</button>
+            
+            </form>
+            </div>
+        </div>
+
+       
+
+    
+</body>
+</html>

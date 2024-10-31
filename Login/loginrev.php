@@ -63,8 +63,11 @@ include_once('../config.php');
 
         //Efetuar login
 
-        $senha = 'a';
-        $email = 'a';
+        if (isset($_POST['submit']) && empty($_POST['email']) && empty($_POST['senha']))
+        {
+            $senha = ' ';
+            $email = ' ';
+        }
 
 
         if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha']))
@@ -79,8 +82,7 @@ include_once('../config.php');
 
         if(mysqli_num_rows($resposta) < 1)
         {
-            unset($_POST['email']);
-            unset($_POST['senha']);
+
             echo '<p style = "color: red; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">';
             print_r("Email / senha invalidos");
             echo '<br>';
@@ -138,7 +140,7 @@ include_once('../config.php');
             if (isset($_POST['submit_conta']))
             {
                 
-                $conta = mysqli_query($conexao, "INSERT INTO cadastrar(email,senha) VALUES ('teste','t')");
+                $conta = mysqli_query($conexao, "INSERT INTO cadastrar(email,senha,confirmado) VALUES ('teste','t',1)");
                 echo '<p style = "color: green; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">';
                 print_r("Conta ('teste') criada!");
                 echo '</p>';
