@@ -1,0 +1,134 @@
+body{
+    display: grid;
+    background-image: url("../imagens/TelaCadastro.png");
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.senhai,.cpfi,.teli,.datai,.nomei,.emaili{
+    text-align: center;
+    background-color: rgba(236, 236, 236, 1);
+    border-radius: 8px;
+    border: none;
+    width: 280px;
+    height: 30px;
+}
+
+#checkbox{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+label{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.cadastro{
+    border: none;
+    border-radius: 14px;
+    height: 40px;
+    width: 200px;
+    background-color: rgba(227, 100, 107, 1);
+    color: white;
+    cursor: pointer;
+}
+
+.cadastro:hover{
+    transition: 1s;
+    color: white;
+    background-color:rgb(196, 89, 95);
+}
+
+.button{
+    border: none;
+    border-radius: 15px;
+    height: 40px;
+    width: 400px;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}
+
+.button:hover{
+    transition: 1s;
+    color: white;
+    background-color:rgba(227, 100, 107, 1);
+}
+
+.button-cadastrar{
+    display: flex;
+    justify-content: center;
+}
+
+.div-form{
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    background-color: white; 
+    box-shadow: 4px 3px 0px 0px rgba(0, 0, 0, 0.096);
+}
+
+.tf1{
+    font-size: 15px;
+}
+
+.tf2{
+    font-size: 10px;
+}
+
+.texto-final{
+    text-align: center;
+}
+
+.credenciais{
+    display: flex;
+    margin-bottom: 20px;
+    
+}
+
+.tel,.cpf,.data,.senha{
+    display: block;
+}
+
+
+.cadas{
+    color: rgba(227, 100, 107, 1);
+    font-style: italic;
+    font-size: 45px;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+}
+
+.ins{
+    font-style: italic;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+}
+
+.teli,.cpfi{
+    width: 150px;
+}
+
+.senhai,.senha,.datai,.data,#checkbox{
+    margin-left: 30px;
+}
+
+.nomei,.emaili{
+    width: 100%;
+}

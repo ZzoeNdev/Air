@@ -1,0 +1,266 @@
+<?php
+
+session_start();
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+include_once('../config.php');
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Air</title>
+    <link rel="icon" href="../imagens/logoicon.png">
+    <link rel="stylesheet" href="telacadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+
+    <div>
+        <a href="../index.php">
+        <img src="../imagens/LogoGeral.png" alt="" height="100px">
+        </a>
+    </div>
+
+    <div>
+        <a href="../Login/loginrev.php"><button class="cadastro">Já tem cadastro?</button></a>
+    </div>
+
+    </header>
+
+    <form method="POST">
+
+    <div class="div-form"> 
+        <label class="cadas">Cadastre-se</label>
+        <br>
+        <label class="ins">Insira suas credencias</label>
+        <br><br><br>
+        <label class="nome">Nome (Completo)</label>
+        <br>
+        <input class="nomei" type="text" name="nome" placeholder="Nome...">
+        <br><br>
+        <label class="email">Email:</label>
+        <br>
+        <input class="emaili" type="text" name="email" placeholder="Email...">
+        <br><br>
+
+
+        
+        <div class="credenciais">
+            <div>
+                <label class="tel">Telefone:</label>
+                <input class="teli" type="text" name="tel" placeholder="Ex: +55 11 96234-1234">
+            </div>
+
+            <div>
+                <label class="data">Data de Nascimento:</label>
+                <input class="datai" name="nasc" type="date">
+            </div>
+        </div>
+
+        <div class="credenciais">
+            <div class="">
+                <label class="cpf">RG/CPF:</label>
+                <input class="cpfi" type="text" name="cpf" placeholder="Ex: 12.123.123/0001-12">
+            </div>
+
+            <div>
+                <label class="senha">Crie uma senha:</label>
+                <input class="senhai" name="senha" type="password" id="senha" placeholder="Senha">
+                <br>
+                <input type="checkbox" id="checkbox" onclick="mostrarSenha()">
+                <label for="checkbox">Mostrar senha</label>
+                
+
+                <script src = "scrptcadastro.js"></script>
+            </div>
+        </div>
+
+        <div class="texto-final">
+            <div>
+                <label class="tf1">Fique Ligado!</label>
+            </div>
+            
+            <div>
+                <label class="tf2">As notificações de novas pesquisas serão enviadas por email ou SMS</label>
+            </div>
+        </div>
+        <br>
+
+        <?php
+
+            //Se não tiver nada
+        
+            if (isset($_POST['submit']) && empty($_POST['email']) && empty($_POST['senha']))
+            {
+                echo '<p style = "color: red; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center;">';
+                print_r("Preencha os campos!");
+                echo '</p>';
+        
+            }
+
+            if (empty($_POST['nasc']))
+            {
+                $nascimento = '';
+            }
+
+
+            //Verificação se já existe conta com o mesmo email
+
+            if (isset($_POST['submit']) && !empty($_POST['email']))
+            {
+
+            $email = $_POST['email'];
+
+            $login = "SELECT * FROM cadastrar WHERE email = '$email'";
+            $reposta = $conexao->query($login);
+
+            if(mysqli_num_rows($reposta) >= 1)
+            {
+                echo '<p style = "color: red; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center;">';
+                print_r("Já existe uma conta com esse email!");
+                echo '</p>';
+            }
+        
+                // Cadastro da Conta
+
+            else
+            {
+
+                if (isset($_POST['submit']))
+                {
+
+                    $nome = $_POST['nome'];
+                    $nascimento = $_POST['nasc'];
+                    $email = $_POST['email'];
+                    $telefone = $_POST['tel'];
+                    $cpf = $_POST['cpf'];
+                    $senha = $_POST['senha'];
+
+                    $_SESSION['nome'] = $_POST['nome'];
+                    $_SESSION['telefone'] = $_POST['tel'];
+
+
+
+                    // Enviar email de confirmação
+
+                    //Criação de chave unica
+
+                    $chave_de_acesso = uniqid(rand());
+                    $link = "air-ez.free.nf/Confirmação/confirm.php?CaDaS=". $chave_de_acesso;   
+                    $confirmado = 0;  
+
+
+                            // Carrega o autoloader do Composer
+                            require '../vendor/autoload.php';
+
+                            // Cria uma nova instância do PHPMailer
+                            $mail = new PHPMailer(true);
+
+                            try {
+                                // Configurações do servidor
+                                $mail->SMTPDebug = 0;                                       // Desativar saída de debug
+                                $mail->isSMTP();                                            // Usar SMTP
+                                $mail->Host       = 'smtp.gmail.com';                 // Servidor SMTP
+                                $mail->SMTPAuth   = true;                                   // Habilitar autenticação SMTP
+                                $mail->Username   = 'enzzo.zre@gmail.com';             // Usuário SMTP
+                                $mail->Password   = 'zevv azab sgyl nmnr';                             // Senha SMTP
+                                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Tipo de encriptação
+                                $mail->Port       = 587;                                    // Porta SMTP
+
+                                // Destinatários
+                                $mail->setFrom('enzzo.zre@gmail.com', 'Air');
+                                $mail->addAddress($email, 'Cliente'); // Adicionar um destinatário
+
+                                // Conteúdo do E-mail
+                                $mail->isHTML(true);                                        // Definir o formato do e-mail para HTML
+                                $mail->Subject = 'Confirmar seu Cadastro no Air';
+                                $mail->Body    = "
+                                <html>
+                                    <body>
+                                        <p>Caro Cliente,</p>
+                                        <br><br>
+                                        <p>Clique no link abaixo para <b>confirmar seu login!</b></p>
+                                        <a href='$link'>Confirmar Cadastro</a>
+                                        <br><br>
+                                        <p>Se esse email chegou para você por engano, apenas ignore</p>
+                                    </body>
+                                </html>
+                                ";
+                                $mail->AltBody = 'Este é o corpo do e-mail em texto simples para clientes de e-mail que não suportam HTML.';
+
+                                $mail->send();
+                            } 
+                            
+                            catch (Exception $e) {
+                                echo '<p style = "color: red; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center;">';
+                                ?>
+                                
+                                    <head>
+                                        <meta http-equiv="refresh" content="3; URL='index.php'">
+                                    </head>
+                                
+                                <?php
+                                die("O email é invalido!");
+                                echo '</p>';
+                                echo '<p style = "color: red; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center;">';
+                                print_r("Você será redirecionado ao Login!");
+                                echo '</p>';
+                            }
+
+                            echo '<p style = "color: green; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center;">';
+                            print_r("Conta criada com sucesso!");
+                            echo '<br>';
+                            print_r("Foi enviada uma mensagem de confirmação ao seu email");
+                            echo '</p>';
+
+                            $conta = mysqli_query($conexao,"INSERT INTO cadastrar(chave_de_acesso,confirmado,nome,nascimento,email,cpf,telefone,senha) VALUES('$chave_de_acesso','$confirmado','$nome','$nascimento','$email','$cpf','$telefone','$senha')");
+
+                            ?>
+
+                            <head>
+                                <meta http-equiv="refresh" content="7; URL='../Login/loginrev.php'">
+                            </head>
+        
+        
+        
+                            <?php
+
+
+                }
+
+
+
+                }
+
+            }
+
+            
+
+
+
+
+
+
+        ?>
+
+
+        <div class="button-cadastrar">
+            <input name="submit" class="button" type="submit" value ="Cadastrar">
+        </div> 
+        <br><br>
+    </div>
+
+    </form>
+
+</body>
+</html>
