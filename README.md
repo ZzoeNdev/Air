@@ -1,8 +1,8 @@
-Site desenvolvido por 5 alunos da Etec:
+Website developed by 5 Etec students:
 - Vitor
 - Leonardo
 - Laura
 - Enzzo
 - Ryan
 
-Feito para fins de trabalho escolar.
+Made for school work.
